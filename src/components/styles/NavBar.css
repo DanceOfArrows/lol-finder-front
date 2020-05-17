@@ -1,0 +1,280 @@
+/* Hide normal navbar div */
+.navbar {
+    display: none;
+}
+
+/* Grid Stuff */
+.mobile-nav-container, .navbar-container {
+    height: 100%;
+    grid-row: 1 / 2;
+}
+#body-container {
+    height: 100%;
+    grid-row: 2 / 3;
+}
+
+/* Bar at top of page */
+.mobile-nav-bar {
+    height: 100%;
+    width: 100%;
+    background-color: #111111;
+    display: grid;
+    grid-template-columns: 10% 1fr 10%;
+    grid-template-rows: 1fr;
+}
+
+/* Mobile home button */
+.mobile-button-home {
+    grid-column: 2 / 3;
+    align-self: center;
+    justify-self: center;
+    font-family: 'optimusprincepsregular';
+    font-weight:normal;
+    font-style:normal;
+    font-size: 7vmin;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+}
+
+.mobile-button-home:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #CDB470;
+}
+
+/* Open nav panel button */
+.mobile-button-nav {
+    grid-column: 3 / 4;
+    background-color: #111111;
+    border: none;
+    color: white;
+    text-rendering: optimizeLegibility;
+}
+
+.mobile-button-nav:hover, .mobile-button-nav-active {
+    color: #CDB470;
+}
+.mobile-button-nav:active, .mobile-button-nav:focus {
+    outline: 0;
+    border: none;
+    --moz-outline-style: none;
+}
+
+/* Mobile Nav Panel */
+#mobile-nav{
+    height: 100%;
+    width: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+    z-index: 5;
+    background-color: #111111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20vh 1fr 1fr 1fr 1fr;
+    will-change: width;
+}
+
+/* Mobile Nav Links */
+.nav-link-home, .nav-link-rotation, .nav-link-search, .nav-link-about {
+    font-family: 'optimusprincepsregular';
+    font-weight:normal;
+    font-style:normal;
+    font-size: 5vmin;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+    align-self: center;
+    justify-self: center;
+}
+
+/* Kindred Logo */
+.logo-mobile-kindred {
+    height: 25vh;
+    width: 25vh;
+    top: 50px;
+    align-self: start;
+    justify-self: center;
+}
+
+.nav-link-home {
+    grid-row: 2 / 3;
+}
+
+.nav-link-search {
+    grid-row: 3 / 4;
+}
+
+.nav-link-rotation {
+    grid-row: 4 / 5;
+}
+
+
+.nav-link-about {
+    grid-row: 5 / 6;
+}
+
+.mobile-nav-container {
+    transition: all .5s;
+    will-change: margin-right;
+}
+
+a.nav-link-home:after, 
+a.nav-link-rotation:after, 
+a.nav-link-about:after, 
+a.nav-link-search:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #CDB470;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.15s ease-in-out 0s;
+    will-change: visibility, transform;
+}
+
+a.nav-link-active:after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+a.nav-link-home:hover:after,
+a.nav-link-rotation:hover:after, 
+a.nav-link-about:hover:after, 
+a.nav-link-search:hover:after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+
+/* Remove outlines on links and buttons */
+a.nav-link-home:active, a.nav-link-home:focus, 
+a.nav-link-rotation:active, a.nav-link-rotation:focus,
+a.nav-link-about:active, a.nav-link-about:focus,
+a.nav-link-search:active, a.nav-link-search:focus,
+.mobile-button-home:active, .mobile-button-home:focus,
+.mobile-button-nav:active, .mobile-button-nav:focus {
+    outline: 0;
+    border: none;
+    --moz-outline-style: none;
+    padding: 0;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+/* Landscape Mobile */
+@media only screen and (orientation: landscape) {
+    .mobile-button-home {
+        font-size: 5vmin;
+    }
+}
+
+/* Larger Display */
+@media only screen and (min-width: 961px) {
+    .mobile-nav-container {
+        display: none;
+    }
+    .navbar-container {
+        display: block;
+    }
+    .navbar, #body-container {
+        margin-right: 0;
+    }
+
+    #root {
+        grid-template-rows: 8vh auto 3vh;
+    }
+
+    .navbar {
+        display: grid;
+        height: 100%;
+        background-color: #111111;
+        grid-template-columns: 2vw 4vw 2vw 10vw auto 8vw 8vw 8vw;
+        grid-template-rows: 1fr;
+    }
+
+    .logo-kindred {
+        align-self: start;
+        justify-self: center;
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        max-height: 100%;
+    }
+
+    /* Global Nav Changes */
+    a.nav-link-home:after, 
+    a.nav-link-rotation:after, 
+    a.nav-link-about:after, 
+    a.nav-link-search:after {
+        display: block;
+        content: "";
+        width: 100%;
+        height: 1px;
+        background-color: #CDB470;
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: all 0.15s ease-in-out 0s;
+        z-index: 100;
+        will-change: visibility, transform;
+    }
+    
+    a.nav-link-active:after {
+        visibility: visible;
+        transform: scaleX(1);
+    }
+    
+    a.nav-link-home, 
+    a.nav-link-rotation, 
+    a.nav-link-about, 
+    a.nav-link-search {
+        font-family: 'optimusprincepsregular';
+        font-weight:normal;
+        font-style:normal;
+        font-size: 1.5vw;
+        color: white;
+        margin: 0;
+        text-decoration: none;
+        justify-self: center;
+        align-self: center;
+        grid-row: 1 / 1;
+    }
+
+    /* Home Button */
+    a.nav-link-home {
+        font-size: 1.75vw;
+        grid-column: 4 / 5;
+    }
+    
+    /* Seperator */
+    .nav-link-seperator {
+        content: "";
+        width: 2px;
+        height: 1.5vw;
+        background-color: #525252;
+        grid-column: 3 / 4;
+        justify-self: center;
+        align-self: center;
+    }
+    
+    /* NavBar Buttons */
+    a.nav-link-search {
+        grid-column: 6 / 7;
+    }
+
+    a.nav-link-rotation {
+        grid-column: 7 / 8;
+    }
+    
+    /* About Button */
+    a.nav-link-about {
+        grid-column: 8 / 9;
+    }
+}

@@ -1,0 +1,163 @@
+.rotation-container {
+    display: grid;
+    margin: 5% 10% 0 10%;
+    justify-items: center;
+    grid-template: 5vh 65vh / 1fr;
+}
+
+.rotation {
+    display: grid;
+    grid-template: repeat(5, 20%) / repeat(3, 1fr);
+    grid-column: 1 / 4
+}
+
+.rotation-new-players {
+    grid-template: repeat(5, 12.5vh) / repeat(2, 1fr);
+    justify-items: center;
+    grid-column: 1 / 4;
+    display: none;
+}
+
+.free-champ, .free-champ-new-players {
+    margin: 5vw;
+    max-height: 10vh;
+    max-width: 15vw;
+    border: 1px solid #C44017;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px 0px #000000;
+    -webkit-box-shadow: 1px 1px 3px 0px #000000;
+    -moz-box-shadow: 1px 1px 3px 0px #000000;
+    transition: all 0.15s;
+}
+
+.rotation-type {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.rotation-standard-button, .rotation-new-players-button {
+    font-family: 'optimusprincepsregular';
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    opacity: 1;
+    font-size: 2vmax;
+    margin: 0 1vh 0 1vh;
+    transition: all 0.15s;
+}
+
+.rotation-standard-button:after, .rotation-new-players-button:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #CDB470;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.25s;
+}
+
+.rotation-standard-button:hover:after, .rotation-new-players-button:hover:after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+.rotation-active:after {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
+/* Make current selections transparent and new selection opaque*/
+.rotation-type > button:not(.rotation-active) {
+    transform: scale(0.75);
+    opacity: 0.1;
+}
+.rotation-type > button:hover:not(.rotation-active) {
+    transform: scale(1);
+    opacity: 1;
+}
+.rotation-active {
+    transform: scale(1);
+}
+
+.free-champ:hover, .free-champ-new-players {
+    border-radius: 0px;
+}
+
+.rotation-loading {
+    align-self: center;
+    grid-row: 2 / 3;
+}
+
+@media only screen and (orientation: landscape) {
+    .rotation-container {
+        margin: 2.5% 10% 0 10%;
+        grid-template: 7.5vh 65vh / 1fr;
+    }
+    
+    .rotation {
+        display: grid;
+        grid-template: repeat(3, 20vh) / repeat(5, 1fr);
+    }
+    
+    .rotation-new-players {
+        display: none;
+        grid-template: repeat(2, 30%) / repeat(5, 1fr);
+        justify-items: center;
+    }
+
+    .free-champ:hover, .free-champ-new-players {
+        border-radius: 0px;
+        outline: 1px solid #FFAA40;
+        outline-offset: 5px;
+        -moz-outline-radius: 0px 40px 0px 40px;
+        transform: scale(1.5);
+    }
+}
+
+@media only screen and (min-width: 961px) {
+    .rotation-container {
+        margin: 2.5% 10% 0 10%;
+        grid-template: 7.5vh 65vh / 1fr;
+    }
+    
+    .rotation {
+        display: grid;
+        grid-template: repeat(3, 25vh) / repeat(5, 1fr);
+    }
+    
+    .rotation-new-players {
+        display: none;
+        grid-template: repeat(2, 30%) / repeat(5, 1fr);
+        justify-items: center;
+        grid-column: 1 / 4
+    }
+
+    .rotation-type {
+        grid-row: 1 /2;
+    }
+
+    .free-champ, .free-champ-new-players {
+        margin: 2vw;
+        max-height: 10vh;
+        max-width: 10vw;
+        border: 1px solid #C44017;
+        border-radius: 10px;
+        box-shadow: 1px 1px 3px 0px #000000;
+        -webkit-box-shadow: 1px 1px 3px 0px #000000;
+        -moz-box-shadow: 1px 1px 3px 0px #000000;
+        transition: all 0.15s;
+    }
+
+    .free-champ:hover, .free-champ-new-players {
+        border-radius: 0px;
+        outline: 1px solid #FFAA40;
+        outline-offset: 5px;
+        -moz-outline-radius: 0px 40px 0px 40px;
+        transform: scale(1.5);
+    }
+}
