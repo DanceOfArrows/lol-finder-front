@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-import BGSlider from './BGSlider';
 import Kindred_sf_pixel from '../assets/custom/Kindred_sf_pixel.png';
-import { changeRegion, submitSearch } from '../redux/search';
+import { changeRegion } from '../redux/search';
 
 import './styles/Search.css'
 
@@ -16,11 +15,9 @@ class Search extends React.Component {
         this.state = {
             summonerName: '',
             region: 'NA1',
-            searchSubmitted: false,
         }
 
         this.changeRegion = this.changeRegion.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.inputForm = null;
         this.updateSummonerName = this.updateProperty('summonerName');
         this.updateRegion = this.updateProperty('region');
@@ -29,18 +26,16 @@ class Search extends React.Component {
     componentDidMount() {
         const inputForm = document.querySelector('.search-input');
         if (inputForm) this.inputForm = inputForm;
-        this.props.changeRegion(this.state.region);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        return nextState.summonerName === this.state.summonerName ? false : true;
     }
 
     changeRegion(e) {
         this.inputForm.focus();
         this.updateRegion(e);
         this.props.changeRegion(e.target.value);
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.submitSearch()
     }
 
     updateProperty = property => e => {
@@ -50,12 +45,6 @@ class Search extends React.Component {
     }
 
     render() {
-        const encodedName = encodeURIComponent(this.state.summonerName);
-
-        if (this.props.searchSubmitted === true && this.state.summonerName) {
-            return <Redirect to={`/summoner/${encodedName}`} />
-        }
-
         return (
             <div className='body-content'>
                 <div className='search-container'>
@@ -85,10 +74,16 @@ class Search extends React.Component {
                             placeholder="Summoner name"
                             onChange={this.updateSummonerName}
                         />
-                        <button className='search-btn' type="submit" onClick={this.handleSubmit}>Go</button>
+                        <NavLink
+                            exact to={this.state.summonerName ? `/summoner/${this.state.summonerName}` : '/search'}
+                            className='search-btn-navlink'
+                        >
+                            <button className='search-btn' type="submit">
+                                Go
+                            </button>
+                        </NavLink>
                     </form>
                 </div>
-                <BGSlider />
             </div>
         );
     }
@@ -97,14 +92,12 @@ class Search extends React.Component {
 const mapStateToProps = state => {
     return {
         region: state.search.region,
-        searchSubmitted: state.search.searchSubmitted,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         changeRegion: (...args) => dispatch(changeRegion(...args)),
-        submitSearch: () => dispatch(submitSearch()),
     };
 };
 

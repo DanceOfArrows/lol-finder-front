@@ -1,0 +1,139 @@
+.summoner-info-container {
+    width: 100%;
+    height: 100%;
+}
+
+.summoner-info-main {
+    height: 25%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    z-index: 3;
+    position: relative;
+}
+
+.summoner-info-rank {
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    color: white;
+    font-family: 'optimusprincepsregular';
+    font-size: 80%;
+    text-shadow: 1px 1px 20px #000000;
+    margin-right: 50%;
+}
+
+.summoner-info-rank > img {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+.summoner-info-player {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    width: 100%;
+}
+
+.summoner-info-portrait-area {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.summoner-info-icon-cut {
+    font-family: 'optimusprincepsregular';
+    font-size: 100%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px #CDB470 solid;
+    color: white;
+}
+
+.summoner-info-icon {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.summoner-info-level {
+    color: white;
+    font-family: 'optimusprincepsregular';
+    align-self: center;
+    margin-top: 10%;
+}
+
+.summoner-info-items {
+    color: white;
+    font-family: 'optimusprincepsregular';
+    font-size: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.summoner-info-name {
+    text-align: center;
+}
+
+.summoner-info-name:after, .summoner-info-level:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #CDB470;
+    opacity: 0.7;
+}
+
+.summoner-info-history > div > div{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.summoner-info-match {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5vmin;
+    margin: 5vmin;
+    color: white;
+}
+
+.match-champion-icon-area {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.match-queue-type {
+    align-self: center;
+}
+
+.match-champion-icon-cut {
+    font-family: 'optimusprincepsregular';
+    font-size: 100%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 1px #CDB470 solid;
+    color: white;
+}
+
+.match-champion-icon-cut > img {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+@media only screen and (min-width: 961px) {
+    .summoner-info-rank {
+        display: flex;
+        margin-right: 0%;
+    }
+}

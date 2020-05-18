@@ -15,12 +15,14 @@
 
 /* Bar at top of page */
 .mobile-nav-bar {
-    height: 100%;
+    height: 10%;
     width: 100%;
     background-color: #111111;
     display: grid;
     grid-template-columns: 10% 1fr 10%;
     grid-template-rows: 1fr;
+    position: fixed;
+    z-index: 1;
 }
 
 /* Mobile home button */
@@ -76,7 +78,7 @@
     transition: 0.5s;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 20vh 1fr 1fr 1fr 1fr;
+    grid-template-rows: 20vh 1fr 1fr 1fr;
     will-change: width;
 }
 
@@ -114,10 +116,6 @@
     grid-row: 4 / 5;
 }
 
-
-.nav-link-about {
-    grid-row: 5 / 6;
-}
 
 .mobile-nav-container {
     transition: all .5s;
@@ -195,10 +193,13 @@ button::-moz-focus-inner {
 
     .navbar {
         display: grid;
-        height: 100%;
+        height: 10%;
         background-color: #111111;
-        grid-template-columns: 2vw 4vw 2vw 10vw auto 8vw 8vw 8vw;
+        grid-template-columns: 2vw 4vw 2vw 10vw auto 8vw 8vw;
         grid-template-rows: 1fr;
+        width: 100%;
+        position: fixed;
+        z-index: 5;
     }
 
     .logo-kindred {

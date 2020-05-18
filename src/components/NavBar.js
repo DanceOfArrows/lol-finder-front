@@ -142,11 +142,6 @@ class NavBar extends React.Component {
                             activeClassName='nav-link-active'>
                             Rotation
                         </NavLink>
-                        <NavLink exact to='/about'
-                            className='nav-link-about'
-                            activeClassName='nav-link-active'>
-                            About
-                        </NavLink>
                     </nav>
                     <div className='mobile-nav-container'>
                         <nav id='mobile-nav'>
@@ -171,13 +166,6 @@ class NavBar extends React.Component {
                                 onClick={this.updateNav}
                             >
                                 Rotation
-                            </NavLink>
-                            <NavLink exact to='/about'
-                                className='nav-link-about'
-                                activeClassName='nav-link-active'
-                                onClick={this.updateNav}
-                            >
-                                About
                             </NavLink>
                         </nav>
                         <div className='mobile-nav-bar'>

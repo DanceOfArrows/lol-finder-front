@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import 'react-awesome-slider/dist/styles.css';
 import './styles/Home.css';
-import BGSlider from './BGSlider';
+
 
 class Home extends React.Component {
     render() {
@@ -15,13 +15,12 @@ class Home extends React.Component {
                             className='nav-link-search-btn'>
                             <button className='home-welcome-btn'>
                                 Get Started
-                                </button>
+                            </button>
                         </NavLink>
                     </div>
                     {/* <div className='home-welcome-btn-border' /> */}
 
                 </div>
-                <BGSlider />
             </div >
         );
     }

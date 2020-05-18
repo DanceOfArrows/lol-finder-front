@@ -47,6 +47,7 @@
     opacity: 1;
     font-size: 2vmax;
     margin: 0 1vh 0 1vh;
+    color: white;
     transition: all 0.15s;
 }
 
@@ -74,7 +75,6 @@
 /* Make current selections transparent and new selection opaque*/
 .rotation-type > button:not(.rotation-active) {
     transform: scale(0.75);
-    opacity: 0.1;
 }
 .rotation-type > button:hover:not(.rotation-active) {
     transform: scale(1);
