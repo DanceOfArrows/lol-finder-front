@@ -72,7 +72,7 @@ class SummonerInfo extends React.Component {
                         <div className='match-champion-icon-cut'>
                             <img src={champImgSrc} alt='ChampIco' />
                         </div>
-                        <div className='match-queue-type'>{match.queueDescription}</div>
+                        {/* <div className='match-queue-type'>{match.queueDescription}</div> */}
                     </div>
                 </div>
             )

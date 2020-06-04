@@ -28,7 +28,7 @@ class NavBar extends React.Component {
     componentDidMount() {
         const nav = document.getElementById('mobile-nav');
         const body = document.querySelector('.body-content');
-        const navbar = document.querySelector('.mobile-nav-container');
+        const navbar = document.querySelector('.mobile-nav-bar');
         const footer = document.getElementById('footer-container');
         const button = document.querySelector('.mobile-button-nav');
 
@@ -58,7 +58,7 @@ class NavBar extends React.Component {
             if (window.innerWidth > 960) {
                 this.nav.style.width = '0';
                 this.body.style.right = '0';
-                this.navbar.style.marginRight = '0';
+                this.navbar.style.right = '0';
                 this.footer.style.right = '0';
                 return;
             }
@@ -87,7 +87,7 @@ class NavBar extends React.Component {
                 this.button.classList.remove('mobile-button-nav-active');
                 this.nav.style.width = '0';
                 this.body.style.right = '0';
-                this.navbar.style.marginRight = '0';
+                this.navbar.style.right = '0';
                 this.footer.style.right = '0';
                 return;
             }
@@ -100,21 +100,21 @@ class NavBar extends React.Component {
             if (window.matchMedia("(orientation: landscape)").matches) {
                 this.nav.style.width = '35%';
                 this.body.style.right = '35%';
-                this.navbar.style.marginRight = '35%';
+                this.navbar.style.right = '35%';
                 this.footer.style.right = '35%';
                 console.log(this.body)
                 return;
             }
             this.nav.style.width = '50%';
             this.body.style.right = '50%';
-            this.navbar.style.marginRight = '50%';
+            this.navbar.style.right = '50%';
             this.footer.style.right = '50%';
             return;
         } else { // Hide Nav
             this.button.classList.remove('mobile-button-nav-active');
             this.nav.style.width = '0';
             this.body.style.right = '0';
-            this.navbar.style.marginRight = '0';
+            this.navbar.style.right = '0';
             this.footer.style.right = '0';
             return;
         }
