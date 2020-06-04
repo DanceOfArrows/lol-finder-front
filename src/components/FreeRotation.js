@@ -14,7 +14,7 @@ class FreeRotation extends React.Component {
     constructor(props) {
         super(props);
 
-        this.importAll = this.importAll.bind(this);
+        // this.importAll = this.importAll.bind(this);
         this.showStandardRotation = this.showStandardRotation.bind(this);
         this.showNewPlayerRotation = this.showNewPlayerRotation.bind(this);
         this.standardRotationBtn = null;
@@ -41,11 +41,11 @@ class FreeRotation extends React.Component {
         }
     }
 
-    importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { return images[item.replace('./', '')] = r(item); });
-        return images;
-    }
+    // importAll(r) {
+    //     let images = {};
+    //     r.keys().map((item, index) => { return images[item.replace('./', '')] = r(item); });
+    //     return images;
+    // }
 
     showStandardRotation() {
         this.standardRotationBtn.classList.add('rotation-active');
@@ -62,8 +62,7 @@ class FreeRotation extends React.Component {
     }
 
     render() {
-        const champIcons = this.importAll(require.context('../assets/DataDragon/img/champion/tiles', false, /_0\.jpg/));
-
+        // const champIcons = this.importAll(require.context('../assets/DataDragon/img/champion/tiles', false, /_0\.jpg/));
         return (
             <div className='body-content'>
                 <div className='rotation-container'>
@@ -87,13 +86,13 @@ class FreeRotation extends React.Component {
                                 </div>
                                 <div className='rotation'>
                                     {this.props.champRotation.freeChampionRotation.map((champion, index, arr) => {
-                                        const champImgName = `${champion}_0.jpg`;
+                                        const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${champion}_0.jpg`;
 
                                         return (
                                             <img
                                                 key={champion}
                                                 className={'free-champ'}
-                                                src={champIcons[`${champImgName}`]}
+                                                src={champImgSrc}
                                                 alt='ChampIcon'
                                             />
                                         )
@@ -101,13 +100,13 @@ class FreeRotation extends React.Component {
                                 </div>
                                 <div className='rotation-new-players'>
                                     {this.props.champRotation.freeChampionRotationForNewPlayers.map((champion, index, arr) => {
-                                        const champImgName = `${champion}_0.jpg`;
+                                        const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${champion}_0.jpg`;
 
                                         return (
                                             <img
                                                 key={champion}
                                                 className={'free-champ'}
-                                                src={champIcons[`${champImgName}`]}
+                                                src={champImgSrc}
                                                 alt='ChampIcon'
                                             />
                                         )

@@ -131,6 +131,10 @@
     max-width: 100%;
 }
 
+.summoner-info-no-rank {
+    margin-top: -100%;
+}
+
 @media only screen and (min-width: 961px) {
     .summoner-info-rank {
         display: flex;

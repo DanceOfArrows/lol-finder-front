@@ -20,14 +20,14 @@ const override = css`
   border-color: #C44017;
 `;
 
-function importImages(r) {
-    let images = {};
-    r.keys().map((item, index) => { return images[item.replace('./', '')] = r(item); });
-    return images;
-}
+// function importImages(r) {
+//     let images = {};
+//     r.keys().map((item, index) => { return images[item.replace('./', '')] = r(item); });
+//     return images;
+// }
 
-const summonerIcons = importImages(require.context('../assets/DataDragon/10.9.1/img/profileicon', false, /\.png/));
-const champIcons = importImages(require.context('../assets/DataDragon/img/champion/tiles', false, /_0\.jpg/));
+// const summonerIcons = importImages(require.context('../assets/DataDragon/10.9.1/img/profileicon', false, /\.png/));
+// const champIcons = importImages(require.context('../assets/DataDragon/img/champion/tiles', false, /_0\.jpg/));
 class SummonerInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -60,7 +60,8 @@ class SummonerInfo extends React.Component {
 
     loadMatches() {
         let matches = this.props.summonerInfo.matchHistory.map((match, i) => {
-            const champImgName = `${match.champion}_0.jpg`;
+            // const champImgName = `${match.champion}_0.jpg`;
+            const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${match.champion}_0.jpg`
             return (
                 <div className='summoner-info-match' key={`match-${i}`}
                     matchId={match.matchId}
@@ -69,7 +70,7 @@ class SummonerInfo extends React.Component {
                 >
                     <div className='match-champion-icon-area'>
                         <div className='match-champion-icon-cut'>
-                            <img src={champIcons[`${champImgName}`]} alt='ChampIco' />
+                            <img src={champImgSrc} alt='ChampIco' />
                         </div>
                         <div className='match-queue-type'>{match.queueDescription}</div>
                     </div>
@@ -100,26 +101,36 @@ class SummonerInfo extends React.Component {
                                 <div className='summoner-info-portrait-area'>
                                     <div className='summoner-info-icon-cut'>
                                         <img
-                                            src={summonerIcons[`${this.props.summonerInfo.summonerIcon}.png`]}
+                                            // src={summonerIcons[`${this.props.summonerInfo.summonerIcon}.png`]}
+                                            src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.9.1/img/profileicon/${this.props.summonerInfo.summonerIcon}.png`}
                                             alt='ProfileIco'
                                             className='summoner-info-icon'
                                         />
                                     </div>
                                     <div className='summoner-info-level'>Level {this.props.summonerInfo.summonerLevel}</div>
                                 </div>
-                                <div className='summoner-info-rank'>
+                                {this.props.summonerInfo.rank != null ? (<div className='summoner-info-rank'>
                                     <img className='summoner-info-rank-icon' src={this.getRankImg()} alt='Unranked' />
                                     <div className='summoner-info-rank-text'>
                                         {this.props.summonerInfo.rank.tier}
                                         {this.props.summonerInfo.rank.rank}
                                     ({this.props.summonerInfo.rank.leaguePoints} LP)
-                                </div>
-                                </div>
+                                    </div>
+                                </div>) :
+                                    (<div className='summoner-info-rank'>
+                                        Unranked
+                                    </div>)}
                                 <div className='summoner-info-items'>
                                     <div className='summoner-info-name'>{this.props.summonerInfo.summonerName}</div>
-                                    <div className='summoner-info-total-games'>Total Games: {this.summonerGameCalc()[0]}</div>
-                                    <div className='summoner-info-win-lose'>W: {this.props.summonerInfo.rank.wins} L: {this.props.summonerInfo.rank.losses}</div>
-                                    <div className='summoner-info-win-ratio'>Win Rate: {this.summonerGameCalc()[1]}%</div>
+                                    {this.props.summonerInfo.rank != null ? (
+                                        <>
+                                            <div className='summoner-info-total-games'>Total Games: {this.summonerGameCalc()[0]}</div>
+                                            <div className='summoner-info-win-lose'>W: {this.props.summonerInfo.rank.wins} L: {this.props.summonerInfo.rank.losses}</div>
+                                            <div className='summoner-info-win-ratio'>Win Rate: {this.summonerGameCalc()[1]}%</div>
+                                        </>)
+                                        :
+                                        <div className='summoner-info-no-rank'>No Rank Info</div>
+                                    }
                                 </div>
                             </div>
                         </div>

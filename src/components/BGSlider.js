@@ -2,11 +2,11 @@ import React from 'react';
 import AwesomeSlider from 'react-awesome-slider';
 import withAutoplay from 'react-awesome-slider/dist/autoplay';
 
-import BPanth from '../assets/DataDragon/img/champion/splash/Pantheon_8.jpg';
-import DSMorde from '../assets/DataDragon/img/champion/splash/Mordekaiser_6.jpg';
-import Kindred from '../assets/DataDragon/img/champion/splash/Kindred_0.jpg';
-import SSNami from '../assets/DataDragon/img/champion/splash/Nami_15.jpg';
-import SGJinx from '../assets/DataDragon/img/champion/splash/Jinx_4.jpg';
+// import BPanth from '../assets/DataDragon/img/champion/splash/Pantheon_8.jpg';
+// import DSMorde from '../assets/DataDragon/img/champion/splash/Mordekaiser_6.jpg';
+// import Kindred from '../assets/DataDragon/img/champion/splash/Kindred_0.jpg';
+// import SSNami from '../assets/DataDragon/img/champion/splash/Nami_15.jpg';
+// import SGJinx from '../assets/DataDragon/img/champion/splash/Jinx_4.jpg';
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -39,11 +39,11 @@ class BGSlider extends React.Component {
 
     shuffle() { //Fisher-Yates (aka Knuth) shuffle > https://github.com/Daplie/knuth-shuffle
         let array = [
-            <div data-src={BPanth} />,
-            <div data-src={DSMorde} />,
-            <div data-src={Kindred} />,
-            <div data-src={SSNami} />,
-            <div data-src={SGJinx} />
+            <div data-src={'https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/splash/Pantheon_8.jpg'} />,
+            <div data-src={'https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/splash/Mordekaiser_6.jpg'} />,
+            <div data-src={'https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/splash/Kindred_0.jpg'} />,
+            <div data-src={'https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/splash/Nami_15.jpg'} />,
+            <div data-src={'https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/splash/Jinx_4.jpg'} />
         ];
         let currentIndex = array.length, temporaryValue, randomIndex;
 
