@@ -44,6 +44,12 @@ class App extends React.Component {
                         Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot
                         Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
                     </div>
+                    <div className='footer-seperator'></div>
+                    <div className='footer-links'>
+                        <a href='https://github.com/lullofthesea/'>Github</a>
+                        <a href='https://www.linkedin.com/in/seamus-le-4355041aa/'> LinkedIn</a>
+                        <a href='https://angel.co/u/seamus-le'> AngelList</a>
+                    </div>
                 </div>
             </>
         );

@@ -81,7 +81,7 @@ html, body, #app, #app, #body-container > div {
 #footer-container {
     background-color: #111111;
     display: grid;
-    grid-template: 1fr / 5vw auto 5vw;
+    grid-template: 1fr / 5vw 2fr auto 1fr 5vw;
     z-index: 5;
     position: fixed;
     height: 10vh;
@@ -98,7 +98,58 @@ html, body, #app, #app, #body-container > div {
     justify-self: center;
     align-self: center;
     font-size: 1vh;
+    text-align: left;
+}
+
+.footer-seperator {
+    content: "";
+    width: 1px;
+    height: 1.5vw;
+    background-color: #525252;
+    grid-column: 3 / 4;
+    justify-self: center;
+    align-self: center;
+}
+
+.footer-links {
+    font-family: 'optimusprincepsregular';
+    color: #B0AEAE;
+    grid-column: 4 / 5;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.5vh;
     text-align: center;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.footer-links > a {
+    align-self: center;
+    justify-self: center;
+    font-family: 'optimusprincepsregular';
+    font-weight:normal;
+    font-style:normal;
+    color: white;
+    margin: 0;
+    text-decoration: none;
+}
+
+.footer-links > a:after {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #CDB470;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.15s ease-in-out 0s;
+    will-change: visibility, transform;
+}
+
+.footer-links > a:hover:after {
+    visibility: visible;
+    transform: scaleX(1);
 }
 
 /* Landscape Mobile */

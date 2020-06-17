@@ -111,10 +111,10 @@
     justify-content: space-between;
 }
 
-.match-queue-type {
+/* .match-queue-type {
     align-self: center;
     font-size: 12pt;
-}
+} */
 
 .match-champion-icon-cut {
     font-family: 'optimusprincepsregular';
