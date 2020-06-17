@@ -101,11 +101,6 @@ html, body, #app, #app, #body-container > div {
     text-align: left;
 }
 
-
-.footer-seperator {
-    display: none;
-}
-
 .footer-links {
     font-family: 'optimusprincepsregular';
     color: #B0AEAE;
@@ -135,6 +130,10 @@ html, body, #app, #app, #body-container > div {
 @media only screen and (orientation: landscape) {
     .footer-text {
         font-size: 0.8vw;
+    }
+
+    .footer-links {
+        flex-direction: row;
     }
 }
 
