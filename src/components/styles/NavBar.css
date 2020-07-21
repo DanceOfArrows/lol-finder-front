@@ -10,7 +10,7 @@
 }
 #body-container {
     height: 100%;
-    grid-row: 2 / 3;
+    margin-top: 12.5vh;
 }
 
 /* Bar at top of page */
@@ -177,7 +177,7 @@ button::-moz-focus-inner {
 
 /* Larger Display */
 @media only screen and (min-width: 961px) {
-    .mobile-nav-container {
+    #mobile-nav, .mobile-nav-bar {
         display: none;
     }
     .navbar-container {
@@ -277,5 +277,8 @@ button::-moz-focus-inner {
     /* About Button */
     a.nav-link-about {
         grid-column: 8 / 9;
+    }
+    #body-container {
+        margin-top: 10vh;
     }
 }

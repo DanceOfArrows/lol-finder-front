@@ -9,19 +9,8 @@ class Home extends React.Component {
     render() {
         return (
             <div className='body-content'>
-                <div className='home-welcome-container'>
-                    <div className='home-welcome-elements'>
-                        <NavLink exact to='/search'
-                            className='nav-link-search-btn'>
-                            <button className='home-welcome-btn'>
-                                Get Started
-                            </button>
-                        </NavLink>
-                    </div>
-                    {/* <div className='home-welcome-btn-border' /> */}
 
-                </div>
-            </div >
+            </div>
         );
     }
 }

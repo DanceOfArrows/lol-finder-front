@@ -123,64 +123,60 @@ class NavBar extends React.Component {
     render() {
         return (
             <>
-                <div className='navbar-container' ref={this.setWrapperRef}>
-                    <nav className='navbar'>
-                        <NavLink exact to='/'
-                            className='nav-link-home'
-                            activeClassName='nav-link-active'>
-                            LoL Finder
+                <nav className='navbar'>
+                    <NavLink exact to='/'
+                        className='nav-link-home'
+                        activeClassName='nav-link-active'>
+                        LoL Finder
                         </NavLink>
-                        <div className='nav-link-seperator'></div>
-                        <img src={Kindred_sf_pixel} className='logo-kindred' alt='hi' />
-                        <NavLink to='/search'
-                            className='nav-link-search'
-                            activeClassName='nav-link-active'>
-                            Search
+                    <div className='nav-link-seperator'></div>
+                    <img src={Kindred_sf_pixel} className='logo-kindred' alt='hi' />
+                    <NavLink to='/search'
+                        className='nav-link-search'
+                        activeClassName='nav-link-active'>
+                        Search
                         </NavLink>
-                        <NavLink to='/rotation'
-                            className='nav-link-rotation'
-                            activeClassName='nav-link-active'>
-                            Rotation
+                    <NavLink to='/rotation'
+                        className='nav-link-rotation'
+                        activeClassName='nav-link-active'>
+                        Rotation
                         </NavLink>
-                    </nav>
-                    <div className='mobile-nav-container'>
-                        <nav id='mobile-nav'>
-                            <img src={Kindred_pixel} className='logo-mobile-kindred' alt='hi' />
-                            <NavLink exact to='/'
-                                className='nav-link-home'
-                                activeClassName='nav-link-active'
-                                onClick={this.updateNav}
-                            >
-                                Home
+                </nav>
+                <nav id='mobile-nav'>
+                    <img src={Kindred_pixel} className='logo-mobile-kindred' alt='hi' />
+                    <NavLink exact to='/'
+                        className='nav-link-home'
+                        activeClassName='nav-link-active'
+                        onClick={this.updateNav}
+                    >
+                        Home
                             </NavLink>
-                            <NavLink to='/search'
-                                className='nav-link-search'
-                                activeClassName='nav-link-active'
-                                onClick={this.updateNav}
-                            >
-                                Search
+                    <NavLink to='/search'
+                        className='nav-link-search'
+                        activeClassName='nav-link-active'
+                        onClick={this.updateNav}
+                    >
+                        Search
                             </NavLink>
-                            <NavLink to='/rotation'
-                                className='nav-link-rotation'
-                                activeClassName='nav-link-active'
-                                onClick={this.updateNav}
-                            >
-                                Rotation
+                    <NavLink to='/rotation'
+                        className='nav-link-rotation'
+                        activeClassName='nav-link-active'
+                        onClick={this.updateNav}
+                    >
+                        Rotation
                             </NavLink>
-                        </nav>
-                        <div className='mobile-nav-bar'>
-                            <NavLink exact to='/'
-                                className='mobile-button-home'
-                                activeClassName='nav-link-active'
-                                onClick={this.hideNav}
-                            >
-                                LoL Finder
+                </nav>
+                <div className='mobile-nav-bar'>
+                    <NavLink exact to='/'
+                        className='mobile-button-home'
+                        activeClassName='nav-link-active'
+                        onClick={this.hideNav}
+                    >
+                        LoL Finder
                             </NavLink>
-                            <button className='mobile-button-nav' onClick={this.updateNav}>
-                                <i className='fa fa-bars'></i>
-                            </button>
-                        </div>
-                    </div>
+                    <button className='mobile-button-nav' onClick={this.updateNav}>
+                        <i className='fa fa-bars'></i>
+                    </button>
                 </div>
             </>
         )

@@ -10,6 +10,7 @@
     display: flex;
     z-index: 3;
     position: relative;
+    padding: 5% 0 5% 0;
 }
 
 .summoner-info-rank {
@@ -25,8 +26,8 @@
 }
 
 .summoner-info-rank > img {
-    max-height: 80%;
-    max-width: 80%;
+    max-height: 256px;
+    max-width: 256px;
 }
 
 .summoner-info-player {
@@ -145,5 +146,10 @@
     .match-champion-icon-cut {
         width: 100px;
         height: 100px;
+    }
+
+    .summoner-info-main {
+        height: 10%;
+        padding: 1% 0 1% 0;
     }
 }

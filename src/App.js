@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Home from './components/Home';
+import Footer from './components/Footer';
 import FreeRotation from './components/FreeRotation';
 import Search from './components/Search';
 import SummonerInfo from './components/SummonerInfo';
@@ -26,31 +27,21 @@ class App extends React.Component {
                                 timeout={300}
                                 classNames='fade'
                             >
-                                <Switch location={location}>
-                                    <Route exact path='/summoner/:summonerName' component={SummonerInfo} />
-                                    <Route exact path='/rotation' component={FreeRotation} />
-                                    <Route exact path='/search' component={Search} />
-                                    <Route exact path='/' component={Home} />
-                                    <Route render={() => <h1>404: Page not found</h1>} />
-                                </Switch>
+                                <div className='page-content'>
+                                    <Switch location={location}>
+                                        <Route exact path='/summoner/:summonerName' component={SummonerInfo} />
+                                        <Route exact path='/rotation' component={FreeRotation} />
+                                        <Route exact path='/search' component={Search} />
+                                        <Route exact path='/' component={Home} />
+                                        <Route render={() => <h1>404: Page not found</h1>} />
+                                    </Switch>
+                                    <Footer />
+                                </div>
                             </CSSTransition>
                         </TransitionGroup>
                     )} />
                 </div>
                 <BGSlider />
-                <div id='footer-container'>
-                    <div className='footer-text'>
-                        LoL Finder isn't endorsed by Riot Games and doesn't reflect the views or opinions of
-                        Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot
-                        Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
-                    </div>
-                    <div className='footer-seperator'></div>
-                    <div className='footer-links'>
-                        <a href='https://github.com/lullofthesea/'>Github</a>
-                        <a href='https://www.linkedin.com/in/seamus-le-4355041aa/'> LinkedIn</a>
-                        <a href='https://angel.co/u/seamus-le'> AngelList</a>
-                    </div>
-                </div>
             </>
         );
     }

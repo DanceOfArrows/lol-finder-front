@@ -65,65 +65,67 @@ class FreeRotation extends React.Component {
         // const champIcons = this.importAll(require.context('../assets/DataDragon/img/champion/tiles', false, /_0\.jpg/));
         return (
             <div className='body-content'>
-                <div className='rotation-container'>
-                    {/* This is messy, but basically check if the fetch for champs finished.
+                {this.props.champRotation ? (
+                    <div className='rotation-container'>
+                        {/* This is messy, but basically check if the fetch for champs finished.
                     If it is not finished, render the loading symbol.  If it is finished, then
                     update the page to load in all the icons. */}
-                    {this.props.champRotation ?
+
                         (
-                            <>
-                                <div className='rotation-type'>
-                                    <button className='rotation-standard-button rotation-active'
-                                        onClick={this.showStandardRotation}
-                                    >
-                                        Standard Rotation
+                        <>
+                            <div className='rotation-type'>
+                                <button className='rotation-standard-button rotation-active'
+                                    onClick={this.showStandardRotation}
+                                >
+                                    Standard Rotation
                                     </button>
-                                    <button className='rotation-new-players-button'
-                                        onClick={this.showNewPlayerRotation}
-                                    >
-                                        New Player Rotation
+                                <button className='rotation-new-players-button'
+                                    onClick={this.showNewPlayerRotation}
+                                >
+                                    New Player Rotation
                                     </button>
-                                </div>
-                                <div className='rotation'>
-                                    {this.props.champRotation.freeChampionRotation.map((champion, index, arr) => {
-                                        const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${champion}_0.jpg`;
-
-                                        return (
-                                            <img
-                                                key={champion}
-                                                className={'free-champ'}
-                                                src={champImgSrc}
-                                                alt='ChampIcon'
-                                            />
-                                        )
-                                    })}
-                                </div>
-                                <div className='rotation-new-players'>
-                                    {this.props.champRotation.freeChampionRotationForNewPlayers.map((champion, index, arr) => {
-                                        const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${champion}_0.jpg`;
-
-                                        return (
-                                            <img
-                                                key={champion}
-                                                className={'free-champ'}
-                                                src={champImgSrc}
-                                                alt='ChampIcon'
-                                            />
-                                        )
-                                    })}
-                                </div>
-                            </>) : (
-                            <div className="rotation-loading">
-                                <ClipLoader
-                                    css={override}
-                                    size={150}
-                                    color={"#123abc"}
-                                    loading={this.props.loading}
-                                />
                             </div>
-                        )
-                    }
-                </div>
+                            <div className='rotation'>
+                                {this.props.champRotation.freeChampionRotation.map((champion, index, arr) => {
+                                    const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${champion}_0.jpg`;
+
+                                    return (
+                                        <img
+                                            key={champion}
+                                            className={'free-champ'}
+                                            src={champImgSrc}
+                                            alt='ChampIcon'
+                                        />
+                                    )
+                                })}
+                            </div>
+                            <div className='rotation-new-players'>
+                                {this.props.champRotation.freeChampionRotationForNewPlayers.map((champion, index, arr) => {
+                                    const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${champion}_0.jpg`;
+
+                                    return (
+                                        <img
+                                            key={champion}
+                                            className={'free-champ'}
+                                            src={champImgSrc}
+                                            alt='ChampIcon'
+                                        />
+                                    )
+                                })}
+                            </div>
+                        </>
+
+                    </div>) : (
+                        <div className="rotation-loading">
+                            <ClipLoader
+                                css={override}
+                                size={150}
+                                color={"#123abc"}
+                                loading={this.props.loading}
+                            />
+                        </div>
+                    )
+                }
             </div >
         );
     }

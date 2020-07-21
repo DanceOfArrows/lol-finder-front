@@ -58,28 +58,6 @@ class SummonerInfo extends React.Component {
         if (tier === 'CHALLENGER') return challengerEmblem;
     }
 
-    loadMatches() {
-        let matches = this.props.summonerInfo.matchHistory.map((match, i) => {
-            // const champImgName = `${match.champion}_0.jpg`;
-            const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${match.champion}_0.jpg`
-            return (
-                <div className='summoner-info-match' key={`match-${i}`}
-                    matchId={match.matchId}
-                    map={match.map}
-                    season={match.season}
-                >
-                    <div className='match-champion-icon-area'>
-                        <div className='match-champion-icon-cut'>
-                            <img src={champImgSrc} alt='ChampIco' />
-                        </div>
-                        {/* <div className='match-queue-type'>{match.queueDescription}</div> */}
-                    </div>
-                </div>
-            )
-        })
-        return matches;
-    }
-
     // Send back win ratio, total games, etc.
     summonerGameCalc() {
         const wins = this.props.summonerInfo.rank.wins;
@@ -135,9 +113,26 @@ class SummonerInfo extends React.Component {
                             </div>
                         </div>
                         <div className='summoner-info-history'>
-                            <Infinite elementHeight={200} useWindowAsScrollContainer>
-                                {this.loadMatches()}
-                            </Infinite>
+                            {
+                                this.props.summonerInfo.matchHistory.map((match, i) => {
+                                    // const champImgName = `${match.champion}_0.jpg`;
+                                    const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${match.champion}_0.jpg`
+                                    return (
+                                        <div className='summoner-info-match' key={`match-${i}`}
+                                            matchId={match.matchId}
+                                            map={match.map}
+                                            season={match.season}
+                                        >
+                                            <div className='match-champion-icon-area'>
+                                                <div className='match-champion-icon-cut'>
+                                                    <img src={champImgSrc} alt='ChampIco' />
+                                                </div>
+                                                {/* <div className='match-queue-type'>{match.queueDescription}</div> */}
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
                         <div className='summoner-info-mastery'></div>
                     </div>

@@ -89,8 +89,10 @@
 }
 
 .rotation-loading {
-    align-self: center;
-    grid-row: 2 / 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 27.5vh;
 }
 
 @media only screen and (orientation: landscape) {
