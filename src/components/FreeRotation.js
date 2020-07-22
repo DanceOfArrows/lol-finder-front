@@ -70,8 +70,6 @@ class FreeRotation extends React.Component {
                         {/* This is messy, but basically check if the fetch for champs finished.
                     If it is not finished, render the loading symbol.  If it is finished, then
                     update the page to load in all the icons. */}
-
-                        (
                         <>
                             <div className='rotation-type'>
                                 <button className='rotation-standard-button rotation-active'

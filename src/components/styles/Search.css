@@ -26,13 +26,12 @@ button:focus {
     width: 100%;
     z-index: 3;
     flex-direction: column;
-    margin-top: 50%;
 }
 
 .search-form-container {
     display: grid;
     width: 75%;
-    height: 25%;
+    height: 7.5%;
 }
 
 .search-input {
@@ -189,7 +188,7 @@ button:focus {
 
     .search-form-container {
         width: 50%;
-        height: 10%;
+        height: 7.5%;
     }
 
     .search-dropdown select {
@@ -237,7 +236,7 @@ button:focus {
 
     .search-dropdown {
         display: grid;
-        width: 10%;
+        width: 15%;
         height: 75%;
         margin-left: .5vw;
         grid-row: 1 / 2;
@@ -250,8 +249,8 @@ button:focus {
 
     .search-form-container {
         display: grid;
-        width: 40%;
-        height: 25%;
+        width: 25%;
+        height: 7.5%;
     }
 
     .search-dropdown select {
@@ -277,9 +276,6 @@ button:focus {
         padding: 3px;
         transform: rotate(45deg);
         -webkit-transform: rotate(45deg);
-    }
-    .search-container {
-        margin-top: 27.5vh;
     }
 }
 

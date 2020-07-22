@@ -1,55 +1,30 @@
-@keyframes getStartedBtn {
-    0% { border-top: 0;}
-    25% { border-right: 0;}
-    50% { border-bottom: 0;}
-    100% { border-left: 0;}
-}
-
-.home-welcome-container {
-    display: flex;
-    justify-content: center;
+.splash-container {
     align-items: center;
-    position: absolute;
-    height: 100%;
-    z-index: 3;
-    flex-direction: column;
+    color: white;
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    justify-content: space-evenly;
 }
 
-.home-welcome-btn {
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
-    color: #111111;
-    font-family: 'optimusprincepsregular';
-    font-size: 2vmax;
-    padding: 2vh 7vh 2vh 7vh;
-    background-color: #FFAA40;
-    box-shadow: 1px 1px 20px 0px #000000;
-    -webkit-box-shadow: 1px 1px 20px 0px #000000;
-    -moz-box-shadow: 1px 1px 20px 0px #000000;
-    text-shadow: 1px 1px 20px #000000;
-    border: none;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.25s;
-    will-change: transform, color, background-color, border-radius, outline, outline-offset;
+.splash-section {
+    background-color: rgba(0,0,0, 0.6);
+    border-radius: 12px;
+    padding: 2%;
+    width: 60%;
 }
 
-.home-welcome-btn:active {
-    transform: scale(0.75);
+.splash-title {
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 0 0 2.5% 0;
+    width: max-content;
 }
 
-.home-welcome-btn:hover {
-    color: #F9F9F9;
-    background-color: #FFAA40;
-    border-radius: 0px;
-    outline: 1px solid #F9F9F9;
-    outline-offset: 5px;
-}
-
-.home-welcome-elements {
-    display: grid;
+.splash-title:after {
+    display: block;
+    content: "";
+    height: 1px;
+    background-color: #CDB470;
+    transition: all 0.15s ease-in-out 0s;
 }
