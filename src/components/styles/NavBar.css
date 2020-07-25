@@ -132,6 +132,7 @@ a.nav-link-active:after {
     transform: scaleX(1);
 }
 
+a.nav-link-leaderboard:hover:after,
 a.nav-link-home:hover:after,
 a.nav-link-rotation:hover:after, 
 a.nav-link-about:hover:after, 
