@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { getSummonerInfo } from '../redux/summonerInfo';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
-import Infinite from 'react-infinite';
 
 import './styles/SummonerInfo.css';
 import bronzeEmblem from '../assets/RankedEmblems/Emblem_Bronze.png';
@@ -134,7 +133,6 @@ class SummonerInfo extends React.Component {
                                 })
                             }
                         </div>
-                        <div className='summoner-info-mastery'></div>
                     </div>
                 ) :
                     (

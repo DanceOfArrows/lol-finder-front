@@ -124,47 +124,70 @@ class NavBar extends React.Component {
         return (
             <>
                 <nav className='navbar'>
-                    <NavLink exact to='/'
-                        className='nav-link-home'
-                        activeClassName='nav-link-active'>
-                        LoL Finder
+                    <div className='nav-left'>
+                        <img src={Kindred_sf_pixel} className='logo-kindred' alt='hi' />
+                        <div className='nav-link-seperator' />
+                        <NavLink exact to='/'
+                            className='nav-link-home'
+                            activeClassName='nav-link-active'>
+                            LoL Finder
                         </NavLink>
-                    <div className='nav-link-seperator'></div>
-                    <img src={Kindred_sf_pixel} className='logo-kindred' alt='hi' />
-                    <NavLink to='/search'
-                        className='nav-link-search'
-                        activeClassName='nav-link-active'>
-                        Search
+
+
+                    </div>
+                    <div className='nav-right'>
+                        <NavLink to='/leaderboard'
+                            className='nav-link-leaderboard'
+                            activeClassName='nav-link-active'
+                            onClick={this.updateNav}
+                        >
+                            Leaderboard
+                    </NavLink>
+                        <NavLink to='/search'
+                            className='nav-link-search'
+                            activeClassName='nav-link-active'>
+                            Search
                         </NavLink>
-                    <NavLink to='/rotation'
-                        className='nav-link-rotation'
-                        activeClassName='nav-link-active'>
-                        Rotation
+                        <NavLink to='/rotation'
+                            className='nav-link-rotation'
+                            activeClassName='nav-link-active'>
+                            Rotation
                         </NavLink>
+                    </div>
                 </nav>
                 <nav id='mobile-nav'>
                     <img src={Kindred_pixel} className='logo-mobile-kindred' alt='hi' />
-                    <NavLink exact to='/'
-                        className='nav-link-home'
-                        activeClassName='nav-link-active'
-                        onClick={this.updateNav}
-                    >
-                        Home
+                    <div className='mobile-nav-right'>
+                        <NavLink exact to='/'
+                            className='nav-link-home'
+                            activeClassName='nav-link-active'
+                            onClick={this.updateNav}
+                        >
+                            Home
                             </NavLink>
-                    <NavLink to='/search'
-                        className='nav-link-search'
-                        activeClassName='nav-link-active'
-                        onClick={this.updateNav}
-                    >
-                        Search
+                        <NavLink to='/leaderboard'
+                            className='nav-link-leaderboard'
+                            activeClassName='nav-link-active'
+                            onClick={this.updateNav}
+                        >
+                            Leaderboard
+                    </NavLink>
+                        <NavLink to='/search'
+                            className='nav-link-search'
+                            activeClassName='nav-link-active'
+                            onClick={this.updateNav}
+                        >
+                            Search
                             </NavLink>
-                    <NavLink to='/rotation'
-                        className='nav-link-rotation'
-                        activeClassName='nav-link-active'
-                        onClick={this.updateNav}
-                    >
-                        Rotation
+                        <NavLink to='/rotation'
+                            className='nav-link-rotation'
+                            activeClassName='nav-link-active'
+                            onClick={this.updateNav}
+                        >
+                            Rotation
                             </NavLink>
+                    </div>
+
                 </nav>
                 <div className='mobile-nav-bar'>
                     <NavLink exact to='/'

@@ -6,6 +6,7 @@ import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Home from './components/Home';
 import Footer from './components/Footer';
 import FreeRotation from './components/FreeRotation';
+import Leaderboard from './components/Leaderboard';
 import Search from './components/Search';
 import SummonerInfo from './components/SummonerInfo';
 import BGSlider from './components/BGSlider';
@@ -29,6 +30,7 @@ class App extends React.Component {
                             >
                                 <div className='page-content'>
                                     <Switch location={location}>
+                                        <Route exact path='/leaderboard' component={Leaderboard} />
                                         <Route exact path='/summoner/:summonerName' component={SummonerInfo} />
                                         <Route exact path='/rotation' component={FreeRotation} />
                                         <Route exact path='/search' component={Search} />

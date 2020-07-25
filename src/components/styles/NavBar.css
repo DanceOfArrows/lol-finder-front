@@ -69,21 +69,27 @@
 #mobile-nav{
     height: 100%;
     width: 0;
-    top: 0;
     right: 0;
     position: fixed;
-    z-index: 5;
+    z-index: 10;
     background-color: #111111;
     overflow-x: hidden;
     transition: 0.5s;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 20vh 1fr 1fr 1fr;
+    grid-template-rows: 20vh 1fr;
     will-change: width;
 }
 
 /* Mobile Nav Links */
-.nav-link-home, .nav-link-rotation, .nav-link-search, .nav-link-about {
+.mobile-nav-right {
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.mobile-nav-right a {
     font-family: 'optimusprincepsregular';
     font-weight:normal;
     font-style:normal;
@@ -104,28 +110,12 @@
     justify-self: center;
 }
 
-.nav-link-home {
-    grid-row: 2 / 3;
-}
-
-.nav-link-search {
-    grid-row: 3 / 4;
-}
-
-.nav-link-rotation {
-    grid-row: 4 / 5;
-}
-
-
 .mobile-nav-bar {
     transition: all .5s;
     will-change: right;
 }
 
-a.nav-link-home:after, 
-a.nav-link-rotation:after, 
-a.nav-link-about:after, 
-a.nav-link-search:after {
+.mobile-nav-right a:after {
     display: block;
     content: "";
     width: 100%;
@@ -187,12 +177,16 @@ button::-moz-focus-inner {
         margin-right: 0;
     }
 
+    .logo-kindred {
+        height: 100%;
+    }
+
     #root {
         grid-template-rows: 8vh auto 3vh;
     }
 
     .navbar {
-        display: grid;
+        display: flex;
         height: 10%;
         background-color: #111111;
         grid-template-columns: 2vw 4vw 2vw 10vw auto 8vw 8vw;
@@ -202,19 +196,46 @@ button::-moz-focus-inner {
         z-index: 5;
     }
 
-    .logo-kindred {
-        align-self: start;
-        justify-self: center;
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
-        max-height: 100%;
+    .nav-left, .nav-right {
+        display: flex;
+        width: 50%;
+    }
+
+    .nav-left {
+        align-items: center;
+        margin-left: 1.5%;
+    }
+
+    .nav-right {
+        align-items: center;
+        justify-content: flex-end;
+        margin-right: 2.5%;
+    }
+
+    .nav-right a, .nav-left a {
+        font-family: 'optimusprincepsregular';
+        font-weight:normal;
+        font-style:normal;
+        font-size: 1.5vw;
+        color: white;
+        margin-left: 5%;
+        text-decoration: none;
+    }
+
+    .nav-left * {
+        margin-right: 2.5%;
+    }
+
+    .nav-left img {
+        margin-right: 0;
+    }
+
+    .nav-left a {
+        margin-left: 0;
     }
 
     /* Global Nav Changes */
-    a.nav-link-home:after, 
-    a.nav-link-rotation:after, 
-    a.nav-link-about:after, 
-    a.nav-link-search:after {
+    .nav-right a:after, .nav-left a:after {
         display: block;
         content: "";
         width: 100%;
@@ -231,27 +252,11 @@ button::-moz-focus-inner {
         visibility: visible;
         transform: scaleX(1);
     }
-    
-    a.nav-link-home, 
-    a.nav-link-rotation, 
-    a.nav-link-about, 
-    a.nav-link-search {
-        font-family: 'optimusprincepsregular';
-        font-weight:normal;
-        font-style:normal;
-        font-size: 1.5vw;
-        color: white;
-        margin: 0;
-        text-decoration: none;
-        justify-self: center;
-        align-self: center;
-        grid-row: 1 / 1;
-    }
+
 
     /* Home Button */
     a.nav-link-home {
         font-size: 1.75vw;
-        grid-column: 4 / 5;
     }
     
     /* Seperator */
@@ -266,18 +271,6 @@ button::-moz-focus-inner {
     }
     
     /* NavBar Buttons */
-    a.nav-link-search {
-        grid-column: 6 / 7;
-    }
-
-    a.nav-link-rotation {
-        grid-column: 7 / 8;
-    }
-    
-    /* About Button */
-    a.nav-link-about {
-        grid-column: 8 / 9;
-    }
     #body-container {
         margin-top: 10vh;
     }
