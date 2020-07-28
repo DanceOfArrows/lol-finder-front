@@ -26,7 +26,8 @@ class Home extends React.Component {
                         </div>
                         <div className='splash-about-search-text'>
                             Using the region selected in the dropdown menu, searches for a
-                            player with the given name and displays their stats and past ten games.
+                            player with the given name and displays their stats and past ten games. Check
+                            the leaderboards if you don't know who to search for!
                         </div>
                     </div>
                     <div className='splash-about-rotation splash-section'>

@@ -102,7 +102,6 @@ class NavBar extends React.Component {
                 this.body.style.right = '35%';
                 this.navbar.style.right = '35%';
                 this.footer.style.right = '35%';
-                console.log(this.body)
                 return;
             }
             this.nav.style.width = '50%';

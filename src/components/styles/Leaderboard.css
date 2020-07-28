@@ -1,0 +1,55 @@
+.leaderboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.leaderboard-title {
+    border-bottom: 1px solid #CDB470;
+}
+
+.leaderboard-summoner-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: grid;
+    grid-template: 1fr / 15% 40% 20% auto;
+    padding: 2.5%;
+    text-align: center;
+    width: 100%;
+}
+
+.leaderboard-summoner-name {
+    background: linear-gradient(to right, white 50%, rgba(0, 0, 0, 0) 50%);
+    background-size: 201% 100%;
+    background-position: right bottom;
+    color: white;
+    text-decoration: none;
+    transition: all .15s ease-out;
+    width: max-content;
+}
+
+.leaderboard-summoner-name:hover {
+    background-position: left bottom;
+    color: black;
+}
+
+@media only screen and (min-width: 961px) {
+    .leaderboard-container {
+        margin: 2.5% 0 2.5% 0;
+    }
+
+    .leaderboard-title {
+        border-top-right-radius: 12px;
+        border-top-left-radius: 12px;
+    }
+    
+    .leaderboard-last {
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .leaderboard-summoner-container {
+        width: 40%;
+    }
+}
