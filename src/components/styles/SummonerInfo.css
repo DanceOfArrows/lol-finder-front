@@ -87,35 +87,19 @@
     opacity: 0.7;
 }
 
-.summoner-info-history > div > div{
-    position: relative;
-    height: 100%;
-    width: 100%;
-}
-
 .summoner-info-match {
     border-radius: 12px;
-    display: flex;
-    justify-content: space-around;
-    align-content: center;
+    display: grid;
+    grid-template: 1fr / 10% 10% 30% 20% auto;
     background-color: rgba(0, 0, 0, 0.3);
     padding: 5vmin;
     margin: 5vmin;
     color: white;
 }
 
-.match-champion-icon-area {
-    display: flex;
-    height: 100%;
-    width: 100%;
-    align-content: center;
-    justify-content: space-between;
+.summoner-info-match > div {
+    width: max-content;
 }
-
-/* .match-queue-type {
-    align-self: center;
-    font-size: 12pt;
-} */
 
 .match-champion-icon-cut {
     font-family: 'optimusprincepsregular';
@@ -131,10 +115,6 @@
 .match-champion-icon-cut > img {
     max-height: 100%;
     max-width: 100%;
-}
-
-.summoner-info-no-rank {
-    margin-top: -100%;
 }
 
 @media only screen and (min-width: 961px) {

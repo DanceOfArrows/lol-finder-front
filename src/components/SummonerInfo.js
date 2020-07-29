@@ -19,14 +19,23 @@ const override = css`
   border-color: #C44017;
 `;
 
-// function importImages(r) {
-//     let images = {};
-//     r.keys().map((item, index) => { return images[item.replace('./', '')] = r(item); });
-//     return images;
-// }
+const summonerSpells = {
+    21: 'SummonerBarrier',
+    1: 'SummonerBoost',
+    14: 'SummonerDot',
+    3: 'SummonerExhuast',
+    4: 'SummonerFlash',
+    6: 'SummonerHaste',
+    7: 'SummonerHeal',
+    13: 'SummonerMana',
+    30: 'SummonerPoroRecall',
+    31: 'SummonerPoroThrow',
+    11: 'SummonerSmite',
+    39: 'SummonerSnowURFSnowball_Mark',
+    32: 'SummonerSnowball',
+    12: 'SummonerTeleport',
+}
 
-// const summonerIcons = importImages(require.context('../assets/DataDragon/10.9.1/img/profileicon', false, /\.png/));
-// const champIcons = importImages(require.context('../assets/DataDragon/img/champion/tiles', false, /_0\.jpg/));
 class SummonerInfo extends React.Component {
     constructor(props) {
         super(props);
@@ -63,9 +72,13 @@ class SummonerInfo extends React.Component {
         const losses = this.props.summonerInfo.rank.losses;
 
         const totalGames = wins + losses;
-        const winRatio = + (Math.floor(((wins / totalGames) * 100) * 100) / 100);
+        const winRatio = (Math.floor(((wins / totalGames) * 100) * 100) / 100);
 
         return [totalGames, winRatio];
+    }
+
+    convertRatio(k, d, a) {
+        return (Math.floor(((k + a) / d) * 100) / 100);
     }
 
     render() {
@@ -79,7 +92,7 @@ class SummonerInfo extends React.Component {
                                     <div className='summoner-info-icon-cut'>
                                         <img
                                             // src={summonerIcons[`${this.props.summonerInfo.summonerIcon}.png`]}
-                                            src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.9.1/img/profileicon/${this.props.summonerInfo.summonerIcon}.png`}
+                                            src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/profileicon/${this.props.summonerInfo.summonerIcon}.png`}
                                             alt='ProfileIco'
                                             className='summoner-info-icon'
                                         />
@@ -113,20 +126,74 @@ class SummonerInfo extends React.Component {
                         </div>
                         <div className='summoner-info-history'>
                             {
-                                this.props.summonerInfo.matchHistory.map((match, i) => {
-                                    // const champImgName = `${match.champion}_0.jpg`;
-                                    const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${match.champion}_0.jpg`
+                                Object.keys(this.props.summonerInfo.matchHistory).map(matchIdx => {
+                                    const match = this.props.summonerInfo.matchHistory[matchIdx];
+                                    const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${match.champion}_0.jpg`;
+                                    let currentPlayerId;
+                                    let currentPlayer;
+
+                                    match.matchData.participantIdentities.forEach(player => {
+                                        if (player.summoner.summonerName === this.props.summonerInfo.summonerName) currentPlayerId = player.participantId;
+                                    })
+
+                                    match.matchData.participants.forEach(player => {
+                                        if (player.participantId === currentPlayerId) currentPlayer = player;
+                                    })
+
+                                    console.log(currentPlayer)
+
                                     return (
-                                        <div className='summoner-info-match' key={`match-${i}`}
-                                            matchId={match.matchId}
-                                            map={match.map}
-                                            season={match.season}
-                                        >
+                                        <div className='summoner-info-match' key={`match-${matchIdx}`}>
                                             <div className='match-champion-icon-area'>
                                                 <div className='match-champion-icon-cut'>
                                                     <img src={champImgSrc} alt='ChampIco' />
                                                 </div>
-                                                {/* <div className='match-queue-type'>{match.queueDescription}</div> */}
+                                            </div>
+                                            <div className='match-summoner-spells'>
+                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/summonerspell/${summonerSpells[currentPlayer.spell1Id]}.png`} />
+                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/summonerspell/${summonerSpells[currentPlayer.spell2Id]}.png`} />
+                                            </div>
+                                            <div className='match-items'>
+                                                {
+                                                    currentPlayer.stats.item0 != 0 ?
+                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item0}.png`} />
+                                                        :
+                                                        <div className='match-no-item' />
+                                                }
+                                                {
+                                                    currentPlayer.stats.item1 != 0 ?
+                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item1}.png`} />
+                                                        :
+                                                        <div className='match-no-item' />
+                                                }
+                                                {
+                                                    currentPlayer.stats.item2 != 0 ?
+                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item2}.png`} />
+                                                        :
+                                                        <div className='match-no-item' />
+                                                }
+                                                {
+                                                    currentPlayer.stats.item3 != 0 ?
+                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item3}.png`} />
+                                                        :
+                                                        <div className='match-no-item' />
+                                                }
+                                                {
+                                                    currentPlayer.stats.item4 != 0 ?
+                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item4}.png`} />
+                                                        :
+                                                        <div className='match-no-item' />
+                                                }
+                                                {
+                                                    currentPlayer.stats.item5 != 0 ?
+                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item5}.png`} />
+                                                        :
+                                                        <div className='match-no-item' />
+                                                }
+                                            </div>
+                                            <div className='match-stats'>
+                                                <div className='match-stats-num'>{currentPlayer.stats.kills} / {currentPlayer.stats.deaths} / {currentPlayer.stats.assists}</div>
+                                                <div className='match-stats-ratio'>{this.convertRatio(currentPlayer.stats.kills, currentPlayer.stats.deaths, currentPlayer.stats.assists)} KDA</div>
                                             </div>
                                         </div>
                                     )
