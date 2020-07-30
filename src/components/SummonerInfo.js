@@ -23,7 +23,7 @@ const summonerSpells = {
     21: 'SummonerBarrier',
     1: 'SummonerBoost',
     14: 'SummonerDot',
-    3: 'SummonerExhuast',
+    3: 'SummonerExhaust',
     4: 'SummonerFlash',
     6: 'SummonerHaste',
     7: 'SummonerHeal',
@@ -78,6 +78,7 @@ class SummonerInfo extends React.Component {
     }
 
     convertRatio(k, d, a) {
+        if (d === 0) return 'Perfect';
         return (Math.floor(((k + a) / d) * 100) / 100);
     }
 
@@ -140,57 +141,78 @@ class SummonerInfo extends React.Component {
                                         if (player.participantId === currentPlayerId) currentPlayer = player;
                                     })
 
-                                    console.log(currentPlayer)
+                                    // console.log(currentPlayer)
+
+                                    const divWinColor = {
+                                        backgroundColor: 'rgba(80, 170, 255, 0.20)',
+                                    };
+
+                                    const divLoseColor = {
+                                        backgroundColor: 'rgba(180, 0, 0, 0.20)',
+                                    };
 
                                     return (
-                                        <div className='summoner-info-match' key={`match-${matchIdx}`}>
-                                            <div className='match-champion-icon-area'>
-                                                <div className='match-champion-icon-cut'>
-                                                    <img src={champImgSrc} alt='ChampIco' />
+                                        <div className='summoner-info-match' key={`match-${matchIdx}`} style={currentPlayer.stats.win ? divWinColor : divLoseColor}>
+                                            <div className='match-icons'>
+                                                <div className='match-champion-icon-area'>
+                                                    <div className='match-champion-icon-cut'>
+                                                        <img src={champImgSrc} alt='ChampIco' />
+                                                    </div>
+                                                </div>
+                                                <div className='match-summoner-spells'>
+                                                    <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/summonerspell/${summonerSpells[currentPlayer.spell1Id]}.png`} alt='summonerSpellIco' />
+                                                    <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/summonerspell/${summonerSpells[currentPlayer.spell2Id]}.png`} alt='summonerSpellIco' />
+                                                </div>
+                                                <div className='match-items'>
+                                                    <div className='match-items-row-top'>
+                                                        {
+                                                            currentPlayer.stats.item0 !== 0 ?
+                                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item0}.png`}
+                                                                    alt='itemIco' />
+                                                                :
+                                                                <div className='match-no-item' />
+                                                        }
+                                                        {
+                                                            currentPlayer.stats.item1 !== 0 ?
+                                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item1}.png`}
+                                                                    alt='itemIco' />
+                                                                :
+                                                                <div className='match-no-item' />
+                                                        }
+                                                        {
+                                                            currentPlayer.stats.item2 !== 0 ?
+                                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item2}.png`}
+                                                                    alt='itemIco' />
+                                                                :
+                                                                <div className='match-no-item' />
+                                                        }
+                                                    </div>
+                                                    <div className='match-items-row-bottom'>
+                                                        {
+                                                            currentPlayer.stats.item3 !== 0 ?
+                                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item3}.png`}
+                                                                    alt='itemIco' />
+                                                                :
+                                                                <div className='match-no-item' />
+                                                        }
+                                                        {
+                                                            currentPlayer.stats.item4 !== 0 ?
+                                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item4}.png`}
+                                                                    alt='itemIco' />
+                                                                :
+                                                                <div className='match-no-item' />
+                                                        }
+                                                        {
+                                                            currentPlayer.stats.item5 !== 0 ?
+                                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item5}.png`}
+                                                                    alt='itemIco' />
+                                                                :
+                                                                <div className='match-no-item' />
+                                                        }
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div className='match-summoner-spells'>
-                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/summonerspell/${summonerSpells[currentPlayer.spell1Id]}.png`} />
-                                                <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/summonerspell/${summonerSpells[currentPlayer.spell2Id]}.png`} />
-                                            </div>
-                                            <div className='match-items'>
-                                                {
-                                                    currentPlayer.stats.item0 != 0 ?
-                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item0}.png`} />
-                                                        :
-                                                        <div className='match-no-item' />
-                                                }
-                                                {
-                                                    currentPlayer.stats.item1 != 0 ?
-                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item1}.png`} />
-                                                        :
-                                                        <div className='match-no-item' />
-                                                }
-                                                {
-                                                    currentPlayer.stats.item2 != 0 ?
-                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item2}.png`} />
-                                                        :
-                                                        <div className='match-no-item' />
-                                                }
-                                                {
-                                                    currentPlayer.stats.item3 != 0 ?
-                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item3}.png`} />
-                                                        :
-                                                        <div className='match-no-item' />
-                                                }
-                                                {
-                                                    currentPlayer.stats.item4 != 0 ?
-                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item4}.png`} />
-                                                        :
-                                                        <div className='match-no-item' />
-                                                }
-                                                {
-                                                    currentPlayer.stats.item5 != 0 ?
-                                                        <img src={`https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/10.15.1/img/item/${currentPlayer.stats.item5}.png`} />
-                                                        :
-                                                        <div className='match-no-item' />
-                                                }
-                                            </div>
+
                                             <div className='match-stats'>
                                                 <div className='match-stats-num'>{currentPlayer.stats.kills} / {currentPlayer.stats.deaths} / {currentPlayer.stats.assists}</div>
                                                 <div className='match-stats-ratio'>{this.convertRatio(currentPlayer.stats.kills, currentPlayer.stats.deaths, currentPlayer.stats.assists)} KDA</div>

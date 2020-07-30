@@ -88,17 +88,10 @@
 }
 
 .summoner-info-match {
-    border-radius: 12px;
     display: grid;
-    grid-template: 1fr / 10% 10% 30% 20% auto;
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 5vmin;
-    margin: 5vmin;
+    grid-template: 144px / 40vw auto 20%;
+    padding: 1%;
     color: white;
-}
-
-.summoner-info-match > div {
-    width: max-content;
 }
 
 .match-champion-icon-cut {
@@ -112,9 +105,46 @@
     color: white;
 }
 
-.match-champion-icon-cut > img {
-    max-height: 100%;
+.match-champion-icon-cut img {
     max-width: 100%;
+}
+
+.match-icons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.match-summoner-spells, .match-items {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.match-items {
+    width: 45%;
+}
+
+.match-items div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.match-items div img, .match-no-item, .match-summoner-spells img {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    height: 32px;
+    width: 32px;
+    flex-shrink: 0;
+}
+
+.match-stats {
+    font-size: 12pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 @media only screen and (min-width: 961px) {
@@ -131,5 +161,24 @@
     .summoner-info-main {
         height: 10%;
         padding: 1% 0 1% 0;
+    }
+
+    .match-items, .match-summoner-spells {
+        height: 100%;
+    }
+
+    .match-items div img, .match-no-item, .match-summoner-spells img {
+        height: 64px;
+        width: 64px;
+    }
+    
+    .match-stats {
+        font-size: 14pt;
+    }
+
+    .summoner-info-match {
+        border-radius: 12px;
+        grid-template: 144px / 45% 10% 45%;
+        margin: 2.5% 20% 2.5% 20%;
     }
 }
