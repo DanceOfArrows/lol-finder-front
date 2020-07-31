@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getSummonerInfo } from '../redux/summonerInfo';
+import { NavLink } from 'react-router-dom';
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
 
+import { getSummonerInfo } from '../redux/summonerInfo';
 import './styles/SummonerInfo.css';
 import bronzeEmblem from '../assets/RankedEmblems/Emblem_Bronze.png';
 import challengerEmblem from '../assets/RankedEmblems/Emblem_Challenger.png';
@@ -141,7 +142,12 @@ class SummonerInfo extends React.Component {
                                         if (player.participantId === currentPlayerId) currentPlayer = player;
                                     })
 
-                                    // console.log(currentPlayer)
+                                    // p = player | i = identity
+                                    const [p0i, p1i, p2i, p3i, p4i, p5i, p6i, p7i, p8i, p9i] = match.matchData.participantIdentities;
+                                    const [p0, p1, p2, p3, p4, p5, p6, p7, p8, p9] = match.matchData.participants;
+
+                                    const t0 = [[p0i, p0], [p1i, p1], [p2i, p2], [p3i, p3], [p4i, p4]];
+                                    const t1 = [[p5i, p5], [p6i, p6], [p7i, p7], [p8i, p8], [p9i, p9]];
 
                                     const divWinColor = {
                                         backgroundColor: 'rgba(80, 170, 255, 0.20)',
@@ -212,10 +218,59 @@ class SummonerInfo extends React.Component {
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div className='match-stats'>
                                                 <div className='match-stats-num'>{currentPlayer.stats.kills} / {currentPlayer.stats.deaths} / {currentPlayer.stats.assists}</div>
                                                 <div className='match-stats-ratio'>{this.convertRatio(currentPlayer.stats.kills, currentPlayer.stats.deaths, currentPlayer.stats.assists)} KDA</div>
+                                            </div>
+                                            <div className='match-participants'>
+                                                <div className='match-participants-t0'>
+                                                    {t0.map((player, idx) => {
+                                                        const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${player[1].championName}_0.jpg`
+                                                        const encodedSummonerName = encodeURI(player[0].summoner.summonerName);
+
+                                                        if (player[0].participantId === currentPlayerId) return (
+                                                            <div className={`match-participants-player${idx + 1}`}>
+                                                                <div className='match-participant-imageContainer'>
+                                                                    <img className='match-participant-image' src={champImgSrc} alt='champIco' />
+                                                                    <div className='match-participant-nameCurrent'>{player[0].summoner.summonerName}</div>
+                                                                </div>
+                                                            </div>
+                                                        )
+
+                                                        return (
+                                                            <div className={`match-participants-player${idx + 1}`}>
+                                                                <div className='match-participant-imageContainer'>
+                                                                    <img className='match-participant-image' src={champImgSrc} alt='champIco' />
+                                                                    <NavLink to={`/summoner/${encodedSummonerName}`} className='match-participant-name'>{player[0].summoner.summonerName}</NavLink>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
+                                                <div className='match-participants-t1'>
+                                                    {t1.map((player, idx) => {
+                                                        const champImgSrc = `https://lol-finder.s3-us-west-1.amazonaws.com/DataDragon/img/champion/tiles/${player[1].championName}_0.jpg`
+                                                        const encodedSummonerName = encodeURI(player[0].summoner.summonerName);
+
+                                                        if (player[0].participantId === currentPlayerId) return (
+                                                            <div className={`match-participants-player${idx + 1}`}>
+                                                                <div className='match-participant-imageContainer'>
+                                                                    <img className='match-participant-image' src={champImgSrc} alt='champIco' />
+                                                                    <div className='match-participant-nameCurrent'>{player[0].summoner.summonerName}</div>
+                                                                </div>
+                                                            </div>
+                                                        )
+
+                                                        return (
+                                                            <div className={`match-participants-player${idx + 1}`}>
+                                                                <div className='match-participant-imageContainer'>
+                                                                    <img className='match-participant-image' src={champImgSrc} alt='champIco' />
+                                                                    <NavLink to={`/summoner/${encodedSummonerName}`} className='match-participant-name'>{player[0].summoner.summonerName}</NavLink>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })}
+                                                </div>
                                             </div>
                                         </div>
                                     )
