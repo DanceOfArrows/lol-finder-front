@@ -4,7 +4,7 @@ The data can normally be found within the client's search function, but is inacc
 on a desktop.  This goal of this app is to alleviates this issue and to also display player data in an 
 easy to read manner.  Champions refer to the playable characters in the game.
 
-![Alt Text](https://lullofthesea.github.io/portfolio/images/lol-finder.gif)
+![Preview](https://raw.githubusercontent.com/lullofthesea/portfolio/master/images/lol-finder.gif)
 
 Feature List:  
 * Displays the current free champion rotation on the home page
