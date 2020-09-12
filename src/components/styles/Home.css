@@ -11,7 +11,7 @@
     background-color: rgba(0,0,0, 0.6);
     border-radius: 12px;
     padding: 2%;
-    width: 60%;
+    width: 90%;
 }
 
 .splash-title {
@@ -32,5 +32,9 @@
 @media only screen and (min-width: 961px) {
     .splash-title {
         font-size: 2rem;
+    }
+
+    .splash-section {
+        width: 60%;
     }
 }

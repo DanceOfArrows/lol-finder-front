@@ -7,6 +7,7 @@ import Kindred_pixel from '../assets/custom/Kindred_pixel.png';
 import Kindred_sf_pixel from '../assets/custom/Kindred_sf_pixel.png';
 
 import './styles/NavBar.css'
+import Search from './Search';
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -15,6 +16,7 @@ class NavBar extends React.Component {
         this.location = props.location;
         this.setWrapperRef = this.setWrapperRef.bind(this);
         this.hideNav = this.hideNav.bind(this);
+        this.toggleSearch = this.toggleSearch.bind(this);
         this.updateNav = this.updateNav.bind(this);
 
         // Not sure if I really want to use redux for these
@@ -94,6 +96,23 @@ class NavBar extends React.Component {
         }
     }
 
+    toggleSearch() {
+        let searchBar = document.querySelector('.search-container');
+        let body = document.getElementById('body-container');
+
+        if (searchBar && searchBar.style.visibility === 'hidden') {
+            searchBar.style.visibility = 'visible';
+            searchBar.style.height = '7.5vh';
+            searchBar.style.opacity = '100';
+            body.style.marginTop = '17.5vh';
+        } else {
+            searchBar.style.visibility = 'hidden';
+            searchBar.style.height = '0px';
+            searchBar.style.opacity = '0';
+            body.style.marginTop = '10vh';
+        }
+    }
+
     updateNav() {
         if (!this.button.classList.contains('mobile-button-nav-active')) { // Show nav
             this.button.classList.add('mobile-button-nav-active');
@@ -142,11 +161,12 @@ class NavBar extends React.Component {
                         >
                             Leaderboard
                     </NavLink>
-                        <NavLink to='/search'
+                        <button
                             className='nav-link-search'
-                            activeClassName='nav-link-active'>
+                            onClick={this.toggleSearch}
+                        >
                             Search
-                        </NavLink>
+                        </button>
                         <NavLink to='/rotation'
                             className='nav-link-rotation'
                             activeClassName='nav-link-active'>
@@ -200,6 +220,7 @@ class NavBar extends React.Component {
                         <i className='fa fa-bars'></i>
                     </button>
                 </div>
+                <Search toggleSearch={this.toggleSearch} />
             </>
         )
     }

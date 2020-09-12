@@ -115,7 +115,7 @@
     will-change: right;
 }
 
-.mobile-nav-right a:after {
+.mobile-nav-right a:after, .nav-link-search:after {
     display: block;
     content: "";
     width: 100%;
@@ -132,11 +132,16 @@ a.nav-link-active:after {
     transform: scaleX(1);
 }
 
+.nav-link-search:hover {
+    cursor: pointer;
+}
+
 a.nav-link-leaderboard:hover:after,
 a.nav-link-home:hover:after,
 a.nav-link-rotation:hover:after, 
 a.nav-link-about:hover:after, 
-a.nav-link-search:hover:after {
+a.nav-link-search:hover:after,
+.nav-link-search:hover:after {
     visibility: visible;
     transform: scaleX(1);
 }
@@ -213,13 +218,16 @@ button::-moz-focus-inner {
         margin-right: 2.5%;
     }
 
-    .nav-right a, .nav-left a {
+    .nav-right a, .nav-left a, .nav-right button {
+        background-color: black;
+        border: none;
         font-family: 'optimusprincepsregular';
         font-weight:normal;
         font-style:normal;
         font-size: 1.5vw;
         color: white;
         margin-left: 5%;
+        outline: none;
         text-decoration: none;
     }
 

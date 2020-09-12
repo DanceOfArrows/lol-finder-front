@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-
-import Kindred_sf_pixel from '../assets/custom/Kindred_sf_pixel.png';
+import { withRouter } from 'react-router-dom';
 import { changeRegion } from '../redux/search';
 
 import './styles/Search.css'
@@ -18,10 +16,13 @@ class Search extends React.Component {
         }
 
         this.changeRegion = this.changeRegion.bind(this);
+        this.redirectToSummoner = this.redirectToSummoner.bind(this);
         this.inputForm = null;
         this.updateSummonerName = this.updateProperty('summonerName');
         this.updateRegion = this.updateProperty('region');
     }
+
+    
 
     componentDidMount() {
         const inputForm = document.querySelector('.search-input');
@@ -29,6 +30,9 @@ class Search extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            return true;
+        }
         return nextState.summonerName === this.state.summonerName ? false : true;
     }
 
@@ -36,6 +40,20 @@ class Search extends React.Component {
         this.inputForm.focus();
         this.updateRegion(e);
         this.props.changeRegion(e.target.value);
+    }
+
+    redirectToSummoner(e) {
+        e.preventDefault();
+        if (this.state.summonerName) {
+            this.props.history.push(`/summoner/${this.state.summonerName}`)
+            this.inputForm.value = '';
+            this.setState({
+                summonerName: ''
+            });
+            this.props.toggleSearch();
+        } else {
+            return;
+        }
     }
 
     updateProperty = property => e => {
@@ -46,10 +64,8 @@ class Search extends React.Component {
 
     render() {
         return (
-            <div className='body-content'>
-                <div className='search-container'>
-                    <img src={Kindred_sf_pixel} className='search-logo-kindred' alt='hi' />
-                    <form className='search-form-container'>
+                <div className='search-container' style={{ visibility: 'hidden', height: '0px', opacity: '0'}}>
+                    <form className='search-form-container' onSubmit={this.redirectToSummoner}>
                         <div className="search-dropdown">
                             <select defaultValue={'NA1'}
                                 onChange={this.changeRegion}
@@ -74,17 +90,13 @@ class Search extends React.Component {
                             placeholder="Summoner name"
                             onChange={this.updateSummonerName}
                         />
-                        <NavLink
-                            exact to={this.state.summonerName ? `/summoner/${this.state.summonerName}` : '/search'}
-                            className='search-btn-navlink'
-                        >
+                        <div className='search-btn-navlink' onClick={this.redirectToSummoner}>
                             <button className='search-btn' type="submit">
                                 Go
                             </button>
-                        </NavLink>
+                        </div>
                     </form>
                 </div>
-            </div>
         );
     }
 }
@@ -101,9 +113,9 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
 )(
     Search
-);
+));

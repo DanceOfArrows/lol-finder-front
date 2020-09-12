@@ -31,6 +31,7 @@ html, body, #root, #app, #app, .page-content, #body-container > div {
     width: 100%;
     top: 0;
     display: flex;
+    transition: all 0.25s;
 }
 
 .page-content {
@@ -80,6 +81,7 @@ html, body, #root, #app, #app, .page-content, #body-container > div {
 }
 
 .body-content {
+    display: flex;
     width: 100%;
     position: relative;
     transition: all .5s;
