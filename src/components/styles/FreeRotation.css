@@ -3,6 +3,7 @@
     margin: 0 10% 0 10%;
     justify-items: center;
     grid-template: 5vh 65vh / 1fr;
+    width: 100%;
 }
 
 .rotation {

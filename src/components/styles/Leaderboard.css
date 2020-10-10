@@ -3,6 +3,7 @@
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
+    flex: 1;
 }
 
 .leaderboard-title {

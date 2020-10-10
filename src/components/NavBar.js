@@ -104,12 +104,10 @@ class NavBar extends React.Component {
             searchBar.style.visibility = 'visible';
             searchBar.style.height = '7.5vh';
             searchBar.style.opacity = '100';
-            body.style.marginTop = '17.5vh';
         } else {
             searchBar.style.visibility = 'hidden';
             searchBar.style.height = '0px';
             searchBar.style.opacity = '0';
-            body.style.marginTop = '10vh';
         }
     }
 
