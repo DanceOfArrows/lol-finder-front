@@ -26,9 +26,56 @@
     }
 
     .search-dropdown {
+        border-radius: 8px;
+        border-style: none;
         grid-column: 1 / 2;
         grid-row: 1 / 2;
         z-index: 6;
+    }
+
+    .search-dropdown select {
+        background-image:
+            linear-gradient(45deg, transparent 50%, gray 50%),
+            linear-gradient(135deg, gray 50%, transparent 50%),
+            linear-gradient(to right, #ccc, #ccc);
+        background-position:
+            82.5%,
+            87.5%,
+            65%;
+        background-size:
+            5px 5px,
+            5px 5px,
+            1px 1.5em;
+        background-repeat: no-repeat;
+        border: none;
+        -webkit-border-top-right-radius: 8px;
+        -webkit-border-bottom-right-radius: 8px;
+        -moz-border-radius-topright: 8px;
+        -moz-border-radius-bottomright: 8px;
+
+        /* Reset */
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        margin: 0;
+
+        /* Styling */
+        border-radius: 8px;
+        padding:2px;
+        height: 100%;
+        width: 100%;
+        background-color: white;
+        font: inherit;
+        padding: 10%;
+    }
+
+    .search-dropdown select:hover, .search-dropdown select:focus {
+        background-image:
+            linear-gradient(45deg, transparent 50%, #CDB470 50%),
+            linear-gradient(135deg, #CDB470 50%, transparent 50%),
+            linear-gradient(to right, #ccc, #ccc);
     }
 
     .search-input {
@@ -40,7 +87,6 @@
         outline: 0;
         padding: 0 20% 0 20%;
         max-width: 100%;
-        z-index: 5;
     }
 
     .search-btn-navlink {
