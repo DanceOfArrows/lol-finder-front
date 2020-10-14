@@ -23,6 +23,8 @@
         grid-template: 1fr / 15% 70% 15%;
         height: 5vh;
         width: 30%;
+        border: 1px solid black;
+        border-radius: 8px;
     }
 
     .search-dropdown {
