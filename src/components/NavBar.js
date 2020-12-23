@@ -98,7 +98,6 @@ class NavBar extends React.Component {
 
     toggleSearch() {
         let searchBar = document.querySelector('.search-container');
-        let body = document.getElementById('body-container');
 
         if (searchBar && searchBar.style.visibility === 'hidden') {
             searchBar.style.visibility = 'visible';
